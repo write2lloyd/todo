@@ -5,7 +5,7 @@ const task = (props) => {
         <div>
             <input type="text" onChange={(e) => props.textChanged(e.target.value)}/>
             <button
-                onClick={() => props.addTask(props.name)}>
+                onClick={() => props.addTask(props.name, 0)}>
                 Add Task
             </button>
         </div>

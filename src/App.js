@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
 import Task from './components/Task';
+import { connect } from 'react-redux';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -50,19 +52,35 @@ class App extends Component {
     return(
       <div className="App">
         <Task 
-          name={this.state.task}
-          textChanged={this.handleChange}
-          addTask={this.handleClick}
+          name={this.props.task}
+          textChanged={this.props.onTaskTextChanged}
+          addTask={this.props.onTaskAdded}
         />
         <hr/>
         <TaskList 
-          taskList={this.state.taskList}
-          deleteTask={this.handleDelete}
-          doneTask = {this.handleMarkAsDone}
+          taskList={this.props.taskList}
+          deleteTask={this.props.onTaskDelete}
+          doneTask = {this.props.onMarkAsDone}
         />
       </div>
     )
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    task: state.task,
+    taskList: state.taskList
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onTaskTextChanged: (val) => dispatch({ type: 'TEXT_CHANGED', changedText: val }),
+    onTaskAdded: (taskname, status) => dispatch({ type: 'TASK_ADDED', task:{name: taskname, status: status} }),
+    onTaskDelete: (id) => dispatch({ type: 'TASK_DELETED', taskId: id}),
+    onMarkAsDone: (id) => dispatch({ type: 'TASK_MARKASDONE', taskId: id})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -10,10 +10,10 @@ const taskList = (props) => {
     const _task = (task, index) => {
         return (
             <div key={index} className="container">
-                <p 
-                  onClick = {() => props.deleteTask(index)} 
-                  key={index}>{taskName(task)}
+                <p>
+                  {taskName(task)}
                 </p>
+                <button onClick = {() => props.deleteTask(index)}>Delete</button>
                 <MarkAsDone
                     status= {task.status}
                     label = {(task.status === 0) ? 'Mark as done' : 'Done'}
