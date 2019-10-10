@@ -3,6 +3,7 @@ import './App.css';
 import TaskList from './components/TaskList';
 import Task from './components/Task';
 import { connect } from 'react-redux';
+import * as actionTypes from './store/actions';
 
 class App extends Component {
   constructor(props) {
@@ -76,10 +77,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onTaskTextChanged: (val) => dispatch({ type: 'TEXT_CHANGED', changedText: val }),
-    onTaskAdded: (taskname, status) => dispatch({ type: 'TASK_ADDED', task:{name: taskname, status: status} }),
-    onTaskDelete: (id) => dispatch({ type: 'TASK_DELETED', taskId: id}),
-    onMarkAsDone: (id) => dispatch({ type: 'TASK_MARKASDONE', taskId: id})
+    onTaskTextChanged: (val) => dispatch({ type: actionTypes.TEXT_CHANGED, changedText: val }),
+    onTaskAdded: (taskname, status) => dispatch({ type: actionTypes.TASK_ADDED, task:{name: taskname, status: status} }),
+    onTaskDelete: (id) => dispatch({ type: actionTypes.TASK_DELETED, taskId: id}),
+    onMarkAsDone: (id) => dispatch({ type: actionTypes.TASK_MARKASDONE, taskId: id})
   }
 }
 

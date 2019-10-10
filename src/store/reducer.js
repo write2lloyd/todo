@@ -1,3 +1,5 @@
+import * as actionTypes from './actions';
+
 const initialState = {
     task: '',
     taskList: []
@@ -5,21 +7,21 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     console.log('inside reducer');
-    if (action.type === 'TEXT_CHANGED') {
+    if (action.type === actionTypes.TEXT_CHANGED) {
         console.log('inside TEXT_CHANGED', action.changedText);
         return {
             ...state,
             task: action.changedText
         }
     }
-    if (action.type === 'TASK_ADDED') {
+    if (action.type === actionTypes.TASK_ADDED) {
         console.log('inside TASK_ADDED', action.task);
         return {
             ...state,
             taskList: state.taskList.concat(action.task)
         }
     }
-    if (action.type === 'TASK_DELETED') {
+    if (action.type === actionTypes.TASK_DELETED) {
         console.log('inside TASK_DELETED', action.taskId);
         const updatedTaskList = state.taskList.filter((_task, index) => {
             return index !== action.taskId;
@@ -30,7 +32,7 @@ const reducer = (state = initialState, action) => {
             taskList: updatedTaskList
         }
     }
-    if (action.type === 'TASK_MARKASDONE') {
+    if (action.type === actionTypes.TASK_MARKASDONE) {
         console.log('inside TASK_MARKASDONE', action.taskId);
         const task = {
             ...state.taskList[action.taskId],

@@ -1,0 +1,4 @@
+export const TEXT_CHANGED = 'TEXT_CHANGED';
+export const TASK_ADDED = 'TASK_ADDED';
+export const TASK_DELETED = 'TASK_DELETED';
+export const TASK_MARKASDONE = 'TASK_MARKASDONE';
