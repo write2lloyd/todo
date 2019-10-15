@@ -77,10 +77,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onTaskTextChanged: (val) => dispatch({ type: actionTypes.TEXT_CHANGED, changedText: val }),
-    onTaskAdded: (taskname, status) => dispatch({ type: actionTypes.TASK_ADDED, task:{name: taskname, status: status} }),
-    onTaskDelete: (id) => dispatch({ type: actionTypes.TASK_DELETED, taskId: id}),
-    onMarkAsDone: (id) => dispatch({ type: actionTypes.TASK_MARKASDONE, taskId: id})
+    onTaskTextChanged: (val) => dispatch(actionTypes.textChanged(val)),
+    onTaskAdded: (taskname, status) => dispatch(actionTypes.taskAdded(taskname, status)),
+    onTaskDelete: (id) => dispatch(actionTypes.taskDeleted(id)),
+    onMarkAsDone: (id) => dispatch(actionTypes.taskMarkAsDone(id))
   }
 }
 
