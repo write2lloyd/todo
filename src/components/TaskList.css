@@ -6,3 +6,9 @@
     border-width: 2px;
     border-color: black;
 }
+
+.quote {
+    color: white;
+    font-style: italic;
+    font-size: 12px;
+}

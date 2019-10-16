@@ -4,7 +4,6 @@ import MarkAsDone from './MarkAsDone';
 
 const taskList = (props) => {
     const list = props.taskList;
-    console.log(list.length);
     console.table(list);
 
     const _task = (task, index) => {
@@ -12,6 +11,9 @@ const taskList = (props) => {
             <div key={index} className="container">
                 <p>
                   {taskName(task)}
+                </p>
+                <p>
+                  <span className="quote">"{task.quote.content}" - {task.quote.author}</span>
                 </p>
                 <button onClick = {() => props.deleteTask(index)}>Delete</button>
                 <MarkAsDone

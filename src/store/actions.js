@@ -10,13 +10,23 @@ export const textChanged = (changedText) => {
     }
 }
 
-export const taskAdded = (taskname, status) => {
+const saveTask = (taskname, status, quote) => {
     return {
         type: TASK_ADDED,
         task: {
             name: taskname,
-            status: status
+            status: status,
+            quote: quote
         }
+    }
+}
+
+export const taskAdded = (taskname, status) => {
+    return async dispatch => {
+        let response = await fetch('https://api.quotable.io/random');
+        const data = await response.json()
+        console.log("data", data);
+        dispatch(saveTask(taskname, status, data));
     }
 }
 
