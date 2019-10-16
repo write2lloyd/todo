@@ -23,10 +23,14 @@ const saveTask = (taskname, status, quote) => {
 
 export const taskAdded = (taskname, status) => {
     return async dispatch => {
-        let response = await fetch('https://api.quotable.io/random');
-        const data = await response.json()
-        console.log("data", data);
-        dispatch(saveTask(taskname, status, data));
+        try {
+            let response = await fetch('https://api.quotable.io/random');
+            const data = await response.json()
+            console.log("data", data);
+            dispatch(saveTask(taskname, status, data));
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
 
