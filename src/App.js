@@ -14,41 +14,6 @@ class App extends Component {
     }
   }
 
-  handleMarkAsDone = taskId => {
-    const task = {
-      ...this.state.taskList[taskId],
-      status: 1
-    }
-    const taskList = [...this.state.taskList];
-    taskList[taskId] = task;
-    this.setState({taskList: taskList});
-  }
-
-  handleDelete = (taskId) => {
-    const updatedTaskList = this.state.taskList.filter((_task, index) => {
-      return index !== taskId;
-    });
-    this.setState((state) => ({
-      taskList: updatedTaskList
-    }));
-  }
-
-  handleClick = (task) => {
-    console.log('inside handleClick', task);
-    const newTask = {
-      name: task,
-      status: 0
-    }
-    this.setState((state) => ({
-      taskList: state.taskList.concat(newTask)
-    }));
-  }
-
-  handleChange = (val) => {
-    this.setState({
-      task: val
-    });
-  }
   render() {
     return(
       <div className="App">
@@ -56,6 +21,7 @@ class App extends Component {
           name={this.props.task}
           textChanged={this.props.onTaskTextChanged}
           addTask={this.props.onTaskAdded}
+          disableButton={this.props.disableAddTaskButton}
         />
         <hr/>
         <TaskList 
@@ -71,7 +37,8 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     task: state.task,
-    taskList: state.taskList
+    taskList: state.taskList,
+    disableAddTaskButton: state.disableAddTaskButton
   }
 }
 

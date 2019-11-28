@@ -2,7 +2,9 @@ import * as actionTypes from './actions';
 
 const initialState = {
     task: '',
-    taskList: []
+    taskList: [],
+    loading: false,
+    disableAddTaskButton: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -18,6 +20,7 @@ const reducer = (state = initialState, action) => {
         console.log('inside TASK_ADDED', action.task);
         return {
             ...state,
+            task: '',
             taskList: state.taskList.concat(action.task)
         }
     }
@@ -45,6 +48,34 @@ const reducer = (state = initialState, action) => {
             taskList: taskList
         }
     }
+
+    if (action.type === actionTypes.GET_QUOTE_START) {
+        console.log('inside GET_QUOTE_START');
+        return {
+            ...state,
+            loading: true,
+            disableAddTaskButton: true
+        }
+    }
+
+    if (action.type === actionTypes.GET_QUOTE_SUCCESS) {
+        console.log('inside GET_QUOTE_SUCCESS');
+        return {
+            ...state,
+            loading: false,
+            disableAddTaskButton: false
+        }
+    }
+
+    if (action.type === actionTypes.GET_QUOTE_FAILED) {
+        console.log('inside GET_QUOTE_FAILED');
+        return {
+            ...state,
+            loading: false,
+            disableAddTaskButton: false
+        }
+    }
+    
     return state;
 }
 
