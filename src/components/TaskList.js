@@ -1,6 +1,7 @@
 import React from 'react';
 import './TaskList.css';
 import MarkAsDone from './MarkAsDone';
+import { Button, Card, CardContent } from '@material-ui/core';
 
 const taskList = (props) => {
     const list = props.taskList;
@@ -8,19 +9,27 @@ const taskList = (props) => {
 
     const _task = (task, index) => {
         return (
-            <div key={index} className="container">
-                <p>
-                  {taskName(task)}
-                </p>
-                <p>
-                  <span className="quote">"{task.quote.content}" - {task.quote.author}</span>
-                </p>
-                <button onClick = {() => props.deleteTask(index)}>Delete</button>
-                <MarkAsDone
-                    status= {task.status}
-                    label = {(task.status === 0) ? 'Mark as done' : 'Done'}
-                    markAsDone={()=>props.doneTask(index)}/>
-              </div>
+            <Card key={index}>
+              <CardContent className="container">
+                <div>
+                    <p className="taskName">
+                      {taskName(task)}
+                    </p>
+                    <p>
+                      <span className="quote">"{task.quote.content}" - {task.quote.author}</span>
+                    </p>
+                    <Button variant="contained" color="secondary" 
+                      onClick = {() => props.deleteTask(index)}>
+                      Delete
+                    </Button>
+                    &nbsp;
+                    <MarkAsDone
+                        status= {task.status}
+                        label = {(task.status === 0) ? 'Mark as done' : 'Done'}
+                        markAsDone={()=>props.doneTask(index)}/>
+                  </div>
+              </CardContent>
+            </Card>
         )
     }
 

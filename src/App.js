@@ -4,6 +4,8 @@ import TaskList from './components/TaskList';
 import Task from './components/Task';
 import { connect } from 'react-redux';
 import * as actionTypes from './store/actions';
+import Spinner from './components/Spinner';
+import { Divider } from '@material-ui/core';
 
 class App extends Component {
   constructor(props) {
@@ -23,7 +25,8 @@ class App extends Component {
           addTask={this.props.onTaskAdded}
           disableButton={this.props.disableAddTaskButton}
         />
-        <hr/>
+        <Divider variant="middle" />
+        <Spinner loading={this.props.loading} />
         <TaskList 
           taskList={this.props.taskList}
           deleteTask={this.props.onTaskDelete}
@@ -38,7 +41,8 @@ const mapStateToProps = (state) => {
   return {
     task: state.task,
     taskList: state.taskList,
-    disableAddTaskButton: state.disableAddTaskButton
+    disableAddTaskButton: state.disableAddTaskButton,
+    loading: state.loading
   }
 }
 

@@ -21,7 +21,7 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             task: '',
-            taskList: state.taskList.concat(action.task)
+            taskList: [action.task, ...state.taskList]
         }
     }
     if (action.type === actionTypes.TASK_DELETED) {

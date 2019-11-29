@@ -1,14 +1,15 @@
 import React from 'react';
+import { Button } from '@material-ui/core';
 
 const markAsDone = props => {
     const buttonStatus = (props.status === 0) ? false : true;
     const label = (props.status === 0) ? 'Mark as done' : 'Done';
     
     return(
-        <button 
+        <Button variant="contained" color="secondary"
             disabled={buttonStatus} 
             onClick={props.markAsDone}>{label}
-        </button>
+        </Button>
     )
 }
 

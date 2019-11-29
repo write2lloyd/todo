@@ -1,14 +1,21 @@
 .container {
     padding: 5px;
     margin: 10px;
-    background-color: gray;
-    border-style: dotted;
-    border-width: 2px;
-    border-color: black;
+    background-color: #26A69A;
 }
 
 .quote {
     color: white;
     font-style: italic;
     font-size: 12px;
+}
+
+.taskName {
+    color: white;
+    font-style: bold;
+    font-size: 20px;
+}
+
+.addTaskButton {
+    vertical-align: bottom;
 }

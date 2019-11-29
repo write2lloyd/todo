@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button, TextField } from '@material-ui/core';
 
 const task = (props) => {
     const handleClick = () => {
@@ -10,13 +11,16 @@ const task = (props) => {
     }
     return (
         <div>
-            <input type="text" 
+            <TextField variant="standard" label="Enter Task" type="text"
                 onChange={(e) => props.textChanged(e.target.value)} 
                 value={props.name}
             />
-            <button onClick={() => handleClick()} disabled={props.disableButton}>
+            &nbsp;
+            <Button variant="contained" color="primary" style={{verticalAlign: "bottom"}}
+                onClick={() => handleClick()} 
+                disabled={props.disableButton}>
                 Add Task
-            </button>
+            </Button>
         </div>
     );
 }
