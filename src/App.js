@@ -21,7 +21,9 @@ class App extends Component {
       <div className="App">
         <Task 
           name={this.props.task}
+          dueDate={this.props.dueDate}
           textChanged={this.props.onTaskTextChanged}
+          dueDateChanged={this.props.onDueDateChanged}
           addTask={this.props.onTaskAdded}
           disableButton={this.props.disableAddTaskButton}
         />
@@ -40,6 +42,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     task: state.task,
+    dueDate: state.dueDate,
     taskList: state.taskList,
     disableAddTaskButton: state.disableAddTaskButton,
     loading: state.loading
@@ -49,7 +52,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     onTaskTextChanged: (val) => dispatch(actionTypes.textChanged(val)),
-    onTaskAdded: (taskname, status) => dispatch(actionTypes.taskAdded(taskname, status)),
+    onDueDateChanged: (val) => dispatch(actionTypes.dueDateChanged(val)),
+    onTaskAdded: (taskname, dueDate, status) => dispatch(actionTypes.taskAdded(taskname, dueDate, status)),
     onTaskDelete: (id) => dispatch(actionTypes.taskDeleted(id)),
     onMarkAsDone: (id) => dispatch(actionTypes.taskMarkAsDone(id))
   }

@@ -16,6 +16,12 @@
     font-size: 20px;
 }
 
+.dueDate {
+    color: white;
+    font-style: bold;
+    font-size: 15px;
+}
+
 .addTaskButton {
     vertical-align: bottom;
 }

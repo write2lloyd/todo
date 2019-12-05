@@ -15,6 +15,9 @@ const taskList = (props) => {
                     <p className="taskName">
                       {taskName(task)}
                     </p>
+                    <p className="dueDate">
+                      Due: {task.dueDate}
+                    </p>
                     <p>
                       <span className="quote">"{task.quote.content}" - {task.quote.author}</span>
                     </p>

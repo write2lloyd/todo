@@ -1,7 +1,9 @@
 import * as actionTypes from './actions';
+import moment from 'moment';
 
 const initialState = {
     task: '',
+    dueDate: moment().format('YYYY-MM-DD'),
     taskList: [],
     loading: false,
     disableAddTaskButton: false
@@ -16,6 +18,15 @@ const reducer = (state = initialState, action) => {
             task: action.changedText
         }
     }
+
+    if (action.type === actionTypes.DUEDATE_CHANGED) {
+        console.log('inside DUEDATE_CHANGED', action.changeDueDate);
+        return {
+            ...state,
+            dueDate: action.changeDueDate
+        }
+    }
+
     if (action.type === actionTypes.TASK_ADDED) {
         console.log('inside TASK_ADDED', action.task);
         return {
@@ -24,6 +35,7 @@ const reducer = (state = initialState, action) => {
             taskList: [action.task, ...state.taskList]
         }
     }
+
     if (action.type === actionTypes.TASK_DELETED) {
         console.log('inside TASK_DELETED', action.taskId);
         const updatedTaskList = state.taskList.filter((_task, index) => {
@@ -35,6 +47,7 @@ const reducer = (state = initialState, action) => {
             taskList: updatedTaskList
         }
     }
+
     if (action.type === actionTypes.TASK_MARKASDONE) {
         console.log('inside TASK_MARKASDONE', action.taskId);
         const task = {

@@ -1,4 +1,5 @@
 export const TEXT_CHANGED = 'TEXT_CHANGED';
+export const DUEDATE_CHANGED = 'DUEDATE_CHANGED';
 export const GET_QUOTE_START = "GET_QUOTE_START";
 export const GET_QUOTE_SUCCESS = "GET_QUOTE_SUCCESS";
 export const GET_QUOTE_FAILED = "GET_QUOTE_FAILED";
@@ -13,11 +14,19 @@ export const textChanged = (changedText) => {
     }
 }
 
-const saveTask = (taskname, status, quote) => {
+export const dueDateChanged = (changedDueDate) => {
+    return {
+        type: DUEDATE_CHANGED,
+        changeDueDate: changedDueDate
+    }
+}
+
+const saveTask = (taskname, dueDate, status, quote) => {
     return {
         type: TASK_ADDED,
         task: {
             name: taskname,
+            dueDate: dueDate,
             status: status,
             quote: quote
         }
@@ -42,14 +51,14 @@ const getQuoteFailed = () => {
     }
 }
 
-export const taskAdded = (taskname, status) => {
+export const taskAdded = (taskname, dueDate, status) => {
     return async dispatch => {
         try {
             dispatch(getQuote());
             let response = await fetch('https://api.quotable.io/random');
             const data = await response.json()
             console.log("data", data);
-            dispatch(saveTask(taskname, status, data));
+            dispatch(saveTask(taskname, dueDate, status, data));
             dispatch(getQuoteSuccess());
         } catch (err) {
             dispatch(getQuoteFailed());
