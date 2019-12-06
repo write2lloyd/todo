@@ -32,6 +32,7 @@ const reducer = (state = initialState, action) => {
         return {
             ...state,
             task: '',
+            dueDate: moment().format('YYYY-MM-DD'),
             taskList: [action.task, ...state.taskList]
         }
     }

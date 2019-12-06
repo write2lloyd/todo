@@ -2,6 +2,7 @@ import React from 'react';
 import './TaskList.css';
 import MarkAsDone from './MarkAsDone';
 import { Button, Card, CardContent } from '@material-ui/core';
+import moment from 'moment';
 
 const taskList = (props) => {
     const list = props.taskList;
@@ -16,7 +17,7 @@ const taskList = (props) => {
                       {taskName(task)}
                     </p>
                     <p className="dueDate">
-                      Due: {task.dueDate}
+                      Due: {moment(task.dueDate).format('dddd, MMMM Do YYYY')}
                     </p>
                     <p>
                       <span className="quote">"{task.quote.content}" - {task.quote.author}</span>

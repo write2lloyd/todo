@@ -22,7 +22,7 @@ const task = (props) => {
                 id="dueDate"
                 label="Due"
                 type="date"
-                defaultValue={props.dueDate}
+                value={props.dueDate}
                 onChange={(e) => props.dueDateChanged(e.target.value)}
                 InputLabelProps={{
                     shrink: true,
