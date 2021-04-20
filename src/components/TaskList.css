@@ -1,10 +1,28 @@
-.container {
-    flex: 1;
-    width: 100%;
-    height: 10%;
-    flex-direction: row;
-    background-color: gray;
-    border-style: dotted;
-    border-width: 2px;
-    border-color: black;
+.taskContainer {
+    padding: 5px;
+    margin: 10px;
+    background-color: #bfdddd;
+    border-radius: 10px;
+}
+
+.quote {
+    color: black;
+    font-style: italic;
+    font-size: 12px;
+}
+
+.taskName {
+    color: black;
+    font-style: bold;
+    font-size: 20px;
+}
+
+.dueDate {
+    color: black;
+    font-style: bold;
+    font-size: 15px;
+}
+
+.addTaskButton {
+    vertical-align: bottom;
 }
