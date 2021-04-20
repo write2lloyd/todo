@@ -4,14 +4,14 @@ import MarkAsDone from './MarkAsDone';
 import { Button, Card, CardContent } from '@material-ui/core';
 import moment from 'moment';
 
-const taskList = (props) => {
+const TaskList = (props) => {
     const list = props.taskList;
     console.table(list);
 
     const _task = (task, index) => {
         return (
             <Card key={index}>
-              <CardContent className="container">
+              <CardContent className="taskContainer">
                 <div>
                     <p className="taskName">
                       {taskName(task)}
@@ -52,4 +52,4 @@ const taskList = (props) => {
     )
 }
 
-export default taskList;
+export default TaskList;

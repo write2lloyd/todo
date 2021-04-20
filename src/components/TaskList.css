@@ -1,23 +1,24 @@
-.container {
+.taskContainer {
     padding: 5px;
     margin: 10px;
-    background-color: #26A69A;
+    background-color: #bfdddd;
+    border-radius: 10px;
 }
 
 .quote {
-    color: white;
+    color: black;
     font-style: italic;
     font-size: 12px;
 }
 
 .taskName {
-    color: white;
+    color: black;
     font-style: bold;
     font-size: 20px;
 }
 
 .dueDate {
-    color: white;
+    color: black;
     font-style: bold;
     font-size: 15px;
 }
