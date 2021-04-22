@@ -6,10 +6,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector, useDispatch} from 'react-redux';
 import { Divider } from '@material-ui/core';
 import * as actionTypes from '../../store/actions';
+import {getAllTodosOrderedByDueDate} from '../../store/selectors';
 
-const Home = (props) => {
+const Home = () => {
   const { isAuthenticated } = useAuth0();
-  const taskList = useSelector(state => state.taskList);
+  const taskList = useSelector(state => getAllTodosOrderedByDueDate(state));
   const dispatch = useDispatch();
   return (
     <div style={{backgroundColor: '#26A69A'}}>
