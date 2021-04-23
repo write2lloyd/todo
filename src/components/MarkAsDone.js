@@ -1,16 +1,22 @@
 import React from 'react';
 import { Button } from '@material-ui/core';
 
-const markAsDone = props => {
-    const buttonStatus = (props.status === 0) ? false : true;
-    const label = (props.status === 0) ? 'Mark as done' : 'Done';
+const toggle = (props) => {
+  console.log('inside toggle', props);
+  if(props.status === 0) {
+    props.markAsDone()
+  } else {
+    props.markAsPending();
+  }
+}
+
+const MarkAsDone = props => {
     
     return(
         <Button variant="contained" color="secondary"
-            disabled={buttonStatus} 
-            onClick={props.markAsDone}>{label}
+            onClick={() => toggle(props)}>{props.label}
         </Button>
     )
 }
 
-export default markAsDone;
+export default MarkAsDone;

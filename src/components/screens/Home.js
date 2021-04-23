@@ -22,11 +22,11 @@ const Home = () => {
           />
           <br/>
           <Divider variant="middle" />
-          <TaskList 
-            taskList={taskList}
-            deleteTask={(id) => dispatch(actionTypes.taskDeleted(id))}
-            doneTask = {(id) => dispatch(actionTypes.taskMarkAsDone(id))}
-          />
+          <div style={{backgroundColor: '#e6ffff', display: 'flex', justifyContent: 'center', alignItems: 'center'}} >
+            <TaskList 
+              taskList={taskList}
+            />
+          </div>
         </>
       )}
     </div>

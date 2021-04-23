@@ -6,6 +6,7 @@ export const GET_QUOTE_FAILED = "GET_QUOTE_FAILED";
 export const TASK_ADDED = 'TASK_ADDED';
 export const TASK_DELETED = 'TASK_DELETED';
 export const TASK_MARKASDONE = 'TASK_MARKASDONE';
+export const TASK_MARKASPENDING = 'TASK_MARKASPENDING';
 
 export const textChanged = (changedText) => {
     return {
@@ -79,4 +80,11 @@ export const taskMarkAsDone = taskId => {
         type: TASK_MARKASDONE,
         taskId: taskId
     }
+}
+
+export const taskMarkAsPending = taskId => {
+  return {
+      type: TASK_MARKASPENDING,
+      taskId: taskId
+  }
 }
