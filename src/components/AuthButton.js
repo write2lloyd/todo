@@ -7,8 +7,9 @@ const useStyles = makeStyles((theme) => ({
   container: {
       display: 'flex',
       height: 100,
-      justifyContent: 'center',
-      alignItems: 'center'
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      flex: 1
   }
 }));
 
@@ -16,8 +17,8 @@ const Login = () => {
   const classes = useStyles();
   const { loginWithRedirect} = useAuth0();
   return (
-      <Container className={classes.container} maxWidth="sm">
-          <Button variant="contained" color="primary" onClick={() => loginWithRedirect()}>Login</Button>
+      <Container className={classes.container}>
+          <Button variant="contained" color="secondary" onClick={() => loginWithRedirect()}>Login</Button>
       </Container>
   )
 }
@@ -26,8 +27,8 @@ const Logout = () => {
   const classes = useStyles();
   const { logout } = useAuth0();
   return (
-      <Container className={classes.container} maxWidth="sm">
-        <Button variant="contained" color="primary" onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button>
+      <Container className={classes.container}>
+        <Button variant="contained" color="secondary" onClick={() => logout({ returnTo: window.location.origin })}>Logout</Button>
       </Container>
   )
 }
