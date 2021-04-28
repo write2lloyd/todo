@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   container: {
       display: 'flex',
-      height: 100,
+      height: 50,
       justifyContent: 'flex-end',
       alignItems: 'center',
       flex: 1

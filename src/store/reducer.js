@@ -5,28 +5,10 @@ const initialState = {
   task: '',
   dueDate: moment().format('YYYY-MM-DD'),
   taskList: [],
-  loading: false,
-  disableAddTaskButton: false
 }
 
 const reducer = (state = initialState, action) => {
   console.log('inside reducer');
-  if (action.type === actionTypes.TEXT_CHANGED) {
-    console.log('inside TEXT_CHANGED', action.changedText);
-    return {
-      ...state,
-      task: action.changedText
-    }
-  }
-
-  if (action.type === actionTypes.DUEDATE_CHANGED) {
-    console.log('inside DUEDATE_CHANGED', action.changeDueDate);
-    return {
-      ...state,
-      dueDate: action.changeDueDate
-    }
-  }
-
   if (action.type === actionTypes.TASK_ADDED) {
     console.log('inside TASK_ADDED', action.task);
     return {
@@ -74,33 +56,6 @@ const reducer = (state = initialState, action) => {
     return {
       ...state,
       taskList: taskList
-    }
-  }
-
-  if (action.type === actionTypes.GET_QUOTE_START) {
-    console.log('inside GET_QUOTE_START');
-    return {
-      ...state,
-      loading: true,
-      disableAddTaskButton: true
-    }
-  }
-
-  if (action.type === actionTypes.GET_QUOTE_SUCCESS) {
-    console.log('inside GET_QUOTE_SUCCESS');
-    return {
-      ...state,
-      loading: false,
-      disableAddTaskButton: false
-    }
-  }
-
-  if (action.type === actionTypes.GET_QUOTE_FAILED) {
-    console.log('inside GET_QUOTE_FAILED');
-    return {
-      ...state,
-      loading: false,
-      disableAddTaskButton: false
     }
   }
 
