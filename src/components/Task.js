@@ -1,16 +1,30 @@
 import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import { Button, Card, CardContent } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 import moment from 'moment';
 import MarkAsDone from './MarkAsDone';
 import * as actionTypes from '../store/actions'
 
+const useStyles = makeStyles(theme => {
+  console.log(theme);
+  return {
+    root: {
+      backgroundColor: theme.palette.secondary.light,
+      padding: theme.spacing(1),
+      margin: theme.spacing(1),
+      borderRadius: theme.spacing(2),
+    },
+  }
+});
+
 const Task = (props) => {
   console.log('task props', props);
+  const classes = useStyles();
   const dispatch = useDispatch();
   return (
-    <Card key={props.taskId}>
-      <CardContent className="taskContainer">
+    <Card key={props.taskId} >
+      <CardContent className={classes.root}>
         <p className="taskName">
           {props.name}
         </p>
