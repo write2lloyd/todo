@@ -13,7 +13,7 @@ const toggle = (props) => {
 const MarkAsDone = props => {
     
     return(
-        <Button variant="contained" color="secondary"
+        <Button variant="contained" color="primary"
             onClick={() => toggle(props)}>{props.label}
         </Button>
     )
