@@ -16,9 +16,6 @@ const useStyles = makeStyles(theme => {
       backgroundColor: theme.palette.primary.dark,
       height: theme.spacing(8),
     },
-    taskentry: {
-      backgroundColor: theme.palette.primary.light
-    },
   }
 });
 
@@ -38,18 +35,8 @@ const Home = () => {
       </AppBar>
       {isAuthenticated && (
         <>
-          <div className={classes.taskentry}>
-            <br />
-            <TaskEntry
-              addTask={(taskname, dueDate, status) => dispatch(actionTypes.taskAdded(taskname, dueDate, status))}
-            />
-            <br/>
-          </div>
-          <div>
-            <TaskList
-              taskList={taskList}
-            />
-          </div>
+          <TaskEntry addTask={(taskname, dueDate, status) => dispatch(actionTypes.taskAdded(taskname, dueDate, status))} />
+          <TaskList taskList={taskList} />
         </>
       )}
     </div>

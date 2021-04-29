@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: theme.palette.primary.light,
+    paddingTop: theme.spacing(1),
+    paddingBottom: theme.spacing(1)
   }
 }));
 
