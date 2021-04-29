@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar } from '@material-ui/core';
+import { AppBar, Toolbar, Typography, Avatar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AuthButton from '../components/AuthButton';
 import TaskEntry from '../components/TaskEntry';
@@ -17,19 +17,33 @@ const useStyles = makeStyles(theme => {
     },
     taskentry: {
       backgroundColor: theme.palette.primary.light
-    }
+    },
+    userInfo: {
+      display: 'flex',
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    avatar: {
+      marginRight: theme.spacing(1),
+    },
   }
 });
 
 const Home = () => {
   const classes = useStyles();
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
   const taskList = useSelector(state => getAllTodosOrderedByDueDate(state));
   const dispatch = useDispatch();
+  console.log('user', user);
   return (
     <div>
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
+          <div className={classes.userInfo}>
+            <Avatar className={classes.avatar} src={user && user.picture} />
+            <Typography>{user && user.name}</Typography>
+          </div>
           <AuthButton />
         </Toolbar>
       </AppBar>

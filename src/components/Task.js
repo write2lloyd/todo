@@ -10,11 +10,14 @@ const useStyles = makeStyles(theme => {
   console.log(theme);
   return {
     root: {
-      backgroundColor: theme.palette.secondary.light,
+      backgroundColor: theme.palette.secondary.main,
       padding: theme.spacing(1),
       margin: theme.spacing(1),
       borderRadius: theme.spacing(2),
     },
+    delete: {
+      backgroundColor: theme.palette.secondary.dark
+    }
   }
 });
 
@@ -34,7 +37,7 @@ const Task = (props) => {
         <p>
           <span className="quote">"{props.quote}" - {props.author}</span>
         </p>
-        <Button variant="contained" color="secondary"
+        <Button variant="contained" className={classes.delete}
           onClick={() => dispatch(actionTypes.taskDeleted(props.taskId))}>
           Delete
         </Button>

@@ -40,7 +40,6 @@ export const taskAdded = (taskname, dueDate, status) => {
       try {
         let response = await fetch('https://api.quotable.io/random');
         const data = await response.json();
-        console.log("data", data);
         dispatch(saveTask(taskname, dueDate, status, data));
         resolve();
       } catch (err) {

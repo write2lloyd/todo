@@ -65,7 +65,7 @@ const TaskEntry = (props) => {
 
   const renderSnackbar = () => (
     <SnackbarMui 
-      message="Task created!"
+      message="Task added!"
       openSnackbar={openSnackbar}
       closeSnackbar={() => setOpenSnackbar(false)}
       variant="success"
