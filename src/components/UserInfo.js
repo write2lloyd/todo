@@ -16,9 +16,9 @@ const useStyles = makeStyles(theme => {
   }
 });
 
-const UserInfo = ({user}) => {
+const UserInfo = ({ user }) => {
   const classes = useStyles();
-  return(
+  return (
     <div className={classes.userInfo}>
       <Avatar className={classes.avatar} src={user && user.picture} />
       <Typography>{user && user.name}</Typography>

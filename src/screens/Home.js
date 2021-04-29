@@ -5,9 +5,9 @@ import AuthButton from '../components/AuthButton';
 import TaskEntry from '../components/TaskEntry';
 import TaskList from '../components/TaskList';
 import { useAuth0 } from "@auth0/auth0-react";
-import { useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import * as actionTypes from '../store/actions';
-import {getAllTodosOrderedByDueDate} from '../store/selectors';
+import { getAllTodosOrderedByDueDate } from '../store/selectors';
 import UserInfo from '../components/UserInfo'
 
 const useStyles = makeStyles(theme => {
@@ -29,7 +29,7 @@ const Home = () => {
     <div>
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
-          <UserInfo user={user} />
+          {isAuthenticated && <UserInfo user={user} />}
           <AuthButton />
         </Toolbar>
       </AppBar>
