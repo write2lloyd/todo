@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Avatar } from '@material-ui/core';
+import { AppBar, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import AuthButton from '../components/AuthButton';
 import TaskEntry from '../components/TaskEntry';
@@ -8,6 +8,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector, useDispatch} from 'react-redux';
 import * as actionTypes from '../store/actions';
 import {getAllTodosOrderedByDueDate} from '../store/selectors';
+import UserInfo from '../components/UserInfo'
 
 const useStyles = makeStyles(theme => {
   return {
@@ -17,15 +18,6 @@ const useStyles = makeStyles(theme => {
     },
     taskentry: {
       backgroundColor: theme.palette.primary.light
-    },
-    userInfo: {
-      display: 'flex',
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    avatar: {
-      marginRight: theme.spacing(1),
     },
   }
 });
@@ -40,10 +32,7 @@ const Home = () => {
     <div>
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
-          <div className={classes.userInfo}>
-            <Avatar className={classes.avatar} src={user && user.picture} />
-            <Typography>{user && user.name}</Typography>
-          </div>
+          <UserInfo user={user} />
           <AuthButton />
         </Toolbar>
       </AppBar>
