@@ -8,7 +8,8 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector, useDispatch } from 'react-redux';
 import * as actionTypes from '../store/actions';
 import { getAllTodosOrderedByDueDate } from '../store/selectors';
-import UserInfo from '../components/UserInfo'
+import UserInfo from '../components/UserInfo';
+import Footer from '../components/Footer';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -35,10 +36,11 @@ const Home = () => {
       </AppBar>
       {isAuthenticated && (
         <>
-          <TaskEntry addTask={(taskname, dueDate, status) => dispatch(actionTypes.taskAdded(taskname, dueDate, status))} />
+          <TaskEntry addTask={(taskname, dueDate, status) => dispatch(actionTypes.taskAdded(taskname, dueDate, status))} /> 
           <TaskList taskList={taskList} />
         </>
       )}
+      <Footer />
     </div>
   )
 }
