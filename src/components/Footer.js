@@ -1,9 +1,9 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import moment from 'moment';
 
 const useStyles = makeStyles(theme => {
-  console.log(theme);
   return {
     container: {
       position: 'fixed',
@@ -23,8 +23,7 @@ const Footer = () => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <Typography className={classes.copy}>© 2021 TaskRunner Inc. All rights reserved.</Typography>
-      
+      <Typography className={classes.copy}>{`© ${moment().year()} TaskRunner Inc. All rights reserved.`}</Typography>
     </div>
   )
 }
