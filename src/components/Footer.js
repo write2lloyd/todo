@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => {
 const Footer = () => {
   const classes = useStyles();
   return (
-    <div className={classes.container}>
+    <div className={classes.container} data-testid="footer">
       <Typography className={classes.copy}>{`© ${moment().year()} TaskRunner Inc. All rights reserved.`}</Typography>
     </div>
   )
