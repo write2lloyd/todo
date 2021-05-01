@@ -1,4 +1,4 @@
-This Todo React App is using Auth0 to authenticate and Material for UX.
+This Todo React App is using Auth0 to authenticate and MaterialUI for UX.
 It uses Redux Thunk to query a 'quotes' api just for fun and demo async operations.
 
 
