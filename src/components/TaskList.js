@@ -1,55 +1,30 @@
 import React from 'react';
 import './TaskList.css';
-import MarkAsDone from './MarkAsDone';
-import { Button, Card, CardContent } from '@material-ui/core';
-import moment from 'moment';
+import Task from './Task';
 
 const TaskList = (props) => {
-    const list = props.taskList;
-    console.table(list);
+  const list = props.taskList;
+  console.log('list', list);
 
-    const _task = (task, index) => {
-        return (
-            <Card key={index}>
-              <CardContent className="taskContainer">
-                <div>
-                    <p className="taskName">
-                      {taskName(task)}
-                    </p>
-                    <p className="dueDate">
-                      Due: {moment(task.dueDate).format('dddd, MMMM Do YYYY')}
-                    </p>
-                    <p>
-                      <span className="quote">"{task.quote.content}" - {task.quote.author}</span>
-                    </p>
-                    <Button variant="contained" color="secondary" 
-                      onClick = {() => props.deleteTask(index)}>
-                      Delete
-                    </Button>
-                    &nbsp;
-                    <MarkAsDone
-                        status= {task.status}
-                        label = {(task.status === 0) ? 'Mark as done' : 'Done'}
-                        markAsDone={()=>props.doneTask(index)}/>
-                  </div>
-              </CardContent>
-            </Card>
-        )
-    }
-
-    const taskName = (task) => {
-        return task.status === 1 ? <strike>{task.name}</strike> : task.name
-    }
-
-    return (
-      <div>
-        {
-          list.map((task, index) => {
-            return _task(task, index);
-          })
-        }       
+  return (
+    <div>
+      {
+        list.map((task, index) => {
+          return (
+            <Task 
+              key={index}
+              taskId={index}
+              name={task.status === 1 ? <strike>{task.name}</strike> : task.name}
+              dueDate={task.dueDate}
+              status={task.status}
+              quote={task.quote.content}
+              author={task.quote.author}
+            />
+          )
+        })
+      }
     </div>
-    )
+  )
 }
 
 export default TaskList;
