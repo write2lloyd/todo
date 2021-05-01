@@ -2,7 +2,6 @@ import React from 'react';
 import { Button } from '@material-ui/core';
 
 const toggle = (props) => {
-  console.log('inside toggle', props);
   if(props.status === 0) {
     props.markAsDone()
   } else {

@@ -7,7 +7,6 @@ import MarkAsDone from './MarkAsDone';
 import * as actionTypes from '../store/actions'
 
 const useStyles = makeStyles(theme => {
-  console.log(theme);
   return {
     root: {
       backgroundColor: theme.palette.secondary.main,
@@ -22,7 +21,6 @@ const useStyles = makeStyles(theme => {
 });
 
 const Task = (props) => {
-  console.log('task props', props);
   const classes = useStyles();
   const dispatch = useDispatch();
   return (

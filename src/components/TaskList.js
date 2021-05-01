@@ -4,8 +4,6 @@ import Task from './Task';
 
 const TaskList = (props) => {
   const list = props.taskList;
-  console.log('list', list);
-
   return (
     <div>
       {

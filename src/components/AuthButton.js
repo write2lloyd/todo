@@ -35,9 +35,6 @@ const Logout = () => {
 
 const AuthButton = () => {
     const { isAuthenticated } = useAuth0();
-
-    console.log('isAuthenticated', isAuthenticated);
-    
     return (
       isAuthenticated ? <Logout /> : <Login /> 
     )

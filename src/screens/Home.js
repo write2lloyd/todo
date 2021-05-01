@@ -25,7 +25,6 @@ const Home = () => {
   const { isAuthenticated, user } = useAuth0();
   const taskList = useSelector(state => getAllTodosOrderedByDueDate(state));
   const dispatch = useDispatch();
-  console.log('user', user);
   return (
     <div>
       <AppBar position="static" className={classes.appbar}>
