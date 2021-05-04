@@ -23,19 +23,20 @@ const useStyles = makeStyles(theme => {
 const Home = () => {
   const classes = useStyles();
   const { isAuthenticated, user } = useAuth0();
+  console.log('user in home', user);
   const taskList = useSelector(state => getAllTodosOrderedByDueDate(state));
   const dispatch = useDispatch();
   return (
     <div>
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
-          {isAuthenticated && <UserInfo user={user} />}
+          {isAuthenticated && <UserInfo {...user} />}
           <AuthButton />
         </Toolbar>
       </AppBar>
       {isAuthenticated && (
         <>
-          <TaskEntry addTask={(taskname, dueDate, status) => dispatch(actionTypes.taskAdded(taskname, dueDate, status))} /> 
+          <TaskEntry addTask={(taskname: string, dueDate: string, status: number) => dispatch(actionTypes.taskAdded(taskname, dueDate, status))} /> 
           <TaskList taskList={taskList} />
         </>
       )}
