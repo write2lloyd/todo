@@ -2,6 +2,9 @@ import React from "react";
 import { css } from "@emotion/core";
 import { SquareLoader } from "react-spinners";
 
+interface Props {
+  loading: boolean | undefined
+}
 
 // Can be a string as well. Need to ensure each key-value pair ends with ;
 const override = css`
@@ -10,7 +13,7 @@ const override = css`
   border-color: red;
 `;
 
-const spinner = (props) => {
+const spinner = (props: Props) => {
     return (
         <div className="sweet-loading">
         <SquareLoader

@@ -1,13 +1,19 @@
 import * as actionTypes from './actions';
 import moment from 'moment';
 
-const initialState = {
+interface IAppState {
+  task: string,
+  dueDate: string,
+  taskList: any
+}
+
+const initialState: IAppState = {
   task: '',
   dueDate: moment().format('YYYY-MM-DD'),
   taskList: [],
 }
 
-const reducer = (state = initialState, action) => {
+const reducer = (state = initialState, action: any) => {
   if (action.type === actionTypes.TASK_ADDED) {
     return {
       ...state,
@@ -18,7 +24,7 @@ const reducer = (state = initialState, action) => {
   }
 
   if (action.type === actionTypes.TASK_DELETED) {
-    const updatedTaskList = state.taskList.filter((_task, index) => {
+    const updatedTaskList = state.taskList.filter((_task: string, index: number) => {
       return index !== action.taskId;
     });
     return {

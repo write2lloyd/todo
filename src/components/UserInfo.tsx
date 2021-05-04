@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => {
   }
 });
 
-const UserInfo = ({ user }) => {
+const UserInfo = ({ user }: any) => {
   const classes = useStyles();
   return (
     <div className={classes.userInfo} data-testid="userInfo">

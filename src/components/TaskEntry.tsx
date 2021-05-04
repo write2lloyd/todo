@@ -4,6 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import moment from 'moment';
 import SnackbarMui from '../components/SnackbarMui';
 
+interface Props {
+  addTask: Function,
+}
+
 const useStyles = makeStyles((theme) => ({
   container: {
     display: 'flex',
@@ -15,13 +19,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const TaskEntry = (props) => {
+const TaskEntry = (props: Props) => {
   const [taskname, setTaskname] = useState('');
   const [tasknameError, setTasknameError] = useState(false);
-  const [tasknameHelperText, setTasknameHelperText] = useState(null);
+  const [tasknameHelperText, setTasknameHelperText] = useState<null | string>();
   const [dueDate, setDueDate] = useState(moment().format('YYYY-MM-DD'));
   const [errorDate, setErrorDate] = useState(false);
-  const [dueDateHelperText, setDueDateHelperText] = useState(null);
+  const [dueDateHelperText, setDueDateHelperText] = useState<null | string>();
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [openSnackbarError, setOpenSnackbarError] = useState(false);
   const [disableAddTaskButton, setDisableAddTaskButton] = useState(false)

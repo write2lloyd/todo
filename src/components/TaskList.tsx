@@ -1,18 +1,22 @@
-import React from 'react';
+import * as React from 'react';
 import './TaskList.css';
 import Task from './Task';
 
-const TaskList = (props) => {
+interface Props {
+  taskList: any
+}
+
+const TaskList = (props: Props) => {
   const list = props.taskList;
   return (
     <div>
       {
-        list.map((task, index) => {
+        list.map((task: any, index: number) => {
           return (
             <Task 
               key={index}
               taskId={index}
-              name={task.status === 1 ? <strike>{task.name}</strike> : task.name}
+              name={task.name}
               dueDate={task.dueDate}
               status={task.status}
               quote={task.quote.content}

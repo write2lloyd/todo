@@ -6,6 +6,15 @@ import moment from 'moment';
 import MarkAsDone from './MarkAsDone';
 import * as actionTypes from '../store/actions'
 
+interface Props {
+  name: string,
+  dueDate: string,
+  quote: string,
+  author: string,
+  taskId: number,
+  status: number,
+}
+
 const useStyles = makeStyles(theme => {
   return {
     root: {
@@ -16,17 +25,23 @@ const useStyles = makeStyles(theme => {
     },
     delete: {
       backgroundColor: theme.palette.secondary.dark
+    },
+    doneTask: {
+      textDecoration: 'line-through'
+    },
+    pendingTask: {
+      textDecoration: 'normal'
     }
   }
 });
 
-const Task = (props) => {
+const Task = (props: Props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   return (
     <Card key={props.taskId} >
       <CardContent className={classes.root}>
-        <p className="taskName">
+        <p className={props.status === 0 ? classes.pendingTask : classes.doneTask}>
           {props.name}
         </p>
         <p className="dueDate">

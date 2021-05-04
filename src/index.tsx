@@ -8,20 +8,24 @@ import reducer from './store/reducer';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
 import { Auth0Provider } from "@auth0/auth0-react";
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 let middleware = [thunk];
 
-const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
-    applyMiddleware(...middleware)
+// const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
+//     applyMiddleware(...middleware)
+// ));
+
+const store = createStore(reducer, composeWithDevTools(
+  applyMiddleware(...middleware),
+  // other store enhancers if any
 ));
 
 ReactDOM.render(
     <Provider store={ store }>
       <Auth0Provider
-        domain={process.env.REACT_APP_DOMAIN}
-        clientId={process.env.REACT_APP_CLIENTID}
+        domain={process.env.REACT_APP_DOMAIN || ''}
+        clientId={process.env.REACT_APP_CLIENTID || ''}
         redirectUri={window.location.origin}
       >
         <App/>

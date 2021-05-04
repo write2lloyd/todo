@@ -1,5 +1,3 @@
-export const TEXT_CHANGED = 'TEXT_CHANGED';
-export const DUEDATE_CHANGED = 'DUEDATE_CHANGED';
 export const GET_QUOTE_START = "GET_QUOTE_START";
 export const GET_QUOTE_SUCCESS = "GET_QUOTE_SUCCESS";
 export const GET_QUOTE_FAILED = "GET_QUOTE_FAILED";
@@ -8,21 +6,7 @@ export const TASK_DELETED = 'TASK_DELETED';
 export const TASK_MARKASDONE = 'TASK_MARKASDONE';
 export const TASK_MARKASPENDING = 'TASK_MARKASPENDING';
 
-export const textChanged = (changedText) => {
-  return {
-    type: TEXT_CHANGED,
-    changedText: changedText
-  }
-}
-
-export const dueDateChanged = (changedDueDate) => {
-  return {
-    type: DUEDATE_CHANGED,
-    changeDueDate: changedDueDate
-  }
-}
-
-const saveTask = (taskname, dueDate, status, quote) => {
+const saveTask = (taskname: string, dueDate: string, status: number, quote: string) => {
   return {
     type: TASK_ADDED,
     task: {
@@ -34,9 +18,9 @@ const saveTask = (taskname, dueDate, status, quote) => {
   }
 }
 
-export const taskAdded = (taskname, dueDate, status) => {
-  return async dispatch => {
-    return new Promise(async (resolve, reject) => {
+export const taskAdded = (taskname: string, dueDate: string, status: number) => {
+  return async (dispatch: any) => {
+    return new Promise(async (resolve: Function, reject: Function) => {
       try {
         let response = await fetch('https://api.quotable.io/random');
         const data = await response.json();
@@ -50,21 +34,21 @@ export const taskAdded = (taskname, dueDate, status) => {
   }
 }
 
-export const taskDeleted = taskId => {
+export const taskDeleted = (taskId: number) => {
   return {
     type: TASK_DELETED,
     taskId: taskId
   }
 }
 
-export const taskMarkAsDone = taskId => {
+export const taskMarkAsDone = (taskId: number) => {
   return {
     type: TASK_MARKASDONE,
     taskId: taskId
   }
 }
 
-export const taskMarkAsPending = taskId => {
+export const taskMarkAsPending = (taskId: number) => {
   return {
     type: TASK_MARKASPENDING,
     taskId: taskId
