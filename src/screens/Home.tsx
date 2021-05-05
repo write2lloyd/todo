@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => {
 const Home = () => {
   const classes = useStyles();
   const { isAuthenticated, user } = useAuth0();
-  console.log('user in home', user);
   const taskList = useSelector(state => getAllTodosOrderedByDueDate(state));
   const dispatch = useDispatch();
   return (

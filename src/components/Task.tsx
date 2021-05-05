@@ -39,7 +39,7 @@ const Task = (props: Props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   return (
-    <Card key={props.taskId} >
+    <Card>
       <CardContent className={classes.root}>
         <p className={props.status === 0 ? classes.pendingTask : classes.doneTask}>
           {props.name}

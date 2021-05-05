@@ -2,18 +2,18 @@ import * as React from 'react';
 import './TaskList.css';
 import Task from './Task';
 
-interface Props {
-  taskList: any
+interface TaskList {
+  taskList: Array<{ name: string, dueDate: string, status: number, quote: string, author: string }>
 }
 
-const TaskList = (props: Props) => {
+const TaskList = (props: TaskList) => {
   const list = props.taskList;
   return (
-    <div>
+    <>
       {
         list.map((task: any, index: number) => {
           return (
-            <Task 
+            <Task
               key={index}
               taskId={index}
               name={task.name}
@@ -25,7 +25,7 @@ const TaskList = (props: Props) => {
           )
         })
       }
-    </div>
+    </>
   )
 }
 

@@ -4,7 +4,7 @@ import moment from 'moment';
 interface IAppState {
   task: string,
   dueDate: string,
-  taskList: any
+  taskList: Array<{ name: string, dueDate: string, status: number, quote: string, author: string }>
 }
 
 const initialState: IAppState = {
@@ -24,7 +24,7 @@ const reducer = (state = initialState, action: any) => {
   }
 
   if (action.type === actionTypes.TASK_DELETED) {
-    const updatedTaskList = state.taskList.filter((_task: string, index: number) => {
+    const updatedTaskList = state.taskList.filter((_task, index) => {
       return index !== action.taskId;
     });
     return {
