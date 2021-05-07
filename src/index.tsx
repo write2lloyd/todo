@@ -11,11 +11,6 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 let middleware = [thunk];
-
-// const store = createStore(reducer, /* preloadedState, */ composeEnhancers(
-//     applyMiddleware(...middleware)
-// ));
-
 const store = createStore(reducer, composeWithDevTools(
   applyMiddleware(...middleware),
   // other store enhancers if any

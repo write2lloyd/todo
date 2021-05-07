@@ -31,7 +31,7 @@ const TaskEntry = (props: Props) => {
   const [disableAddTaskButton, setDisableAddTaskButton] = useState(false)
   const classes = useStyles();
   
-  const handleClick = () => {
+  const handleClick = async () => {
     if (!moment(dueDate, 'YYYY-MM-DD', true).isValid()) {
       setErrorDate(true);
       setDueDateHelperText('Invalid Date');
@@ -41,12 +41,12 @@ const TaskEntry = (props: Props) => {
       setTasknameHelperText('Taskname cannot be blank');
     } else {
       setDisableAddTaskButton(true);
-      props.addTask(taskname, dueDate, 0)
-      .then(() => {
+      try {
+        await props.addTask(taskname, dueDate, 0);
         cleanupAfterAdd();
-      }).catch(() => {
+      } catch (error) {
         cleanupAfterError();
-      }) 
+      }
     }
   }
 
