@@ -19,7 +19,7 @@ it('renders UserInfo with a picture and name', () => {
     picture: 'https://picsum.photos/200',
     name: 'Rafael Dsouza',
   };
-  const { getByTestId } = render(<UserInfo user={user} />);
+  const { getByTestId } = render(<UserInfo {...user} />);
   expect(getByTestId('avatar').children[0].src).toEqual('https://picsum.photos/200');
   expect(getByTestId('name').textContent).toEqual('Rafael Dsouza');
 })

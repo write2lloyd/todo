@@ -1,5 +1,4 @@
 import * as React from 'react';
-import './TaskList.css';
 import Task from './Task';
 
 interface TaskList {

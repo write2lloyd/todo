@@ -19,9 +19,6 @@ const useStyles = makeStyles(theme => {
   return {
     root: {
       backgroundColor: theme.palette.secondary.main,
-      padding: theme.spacing(1),
-      margin: theme.spacing(1),
-      borderRadius: theme.spacing(2),
     },
     delete: {
       backgroundColor: theme.palette.secondary.dark
@@ -31,6 +28,16 @@ const useStyles = makeStyles(theme => {
     },
     pendingTask: {
       textDecoration: 'normal'
+    },
+    quote: {
+      color: 'black',
+      fontStyle: 'italic',
+      fontSize: 12,
+    },
+    dueDate: {
+      color: 'black',
+      fontStyle: 'bold',
+      fontSize: 15,
     }
   }
 });
@@ -39,16 +46,16 @@ const Task = (props: Props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   return (
-    <Card>
+    <Card elevation={0}>
       <CardContent className={classes.root}>
         <p className={props.status === 0 ? classes.pendingTask : classes.doneTask}>
           {props.name}
         </p>
-        <p className="dueDate">
+        <p className={classes.dueDate}>
           Due: {moment(props.dueDate).format('dddd, MMMM Do YYYY')}
         </p>
         <p>
-          <span className="quote">"{props.quote}" - {props.author}</span>
+          <span className={classes.quote}>"{props.quote}" - {props.author}</span>
         </p>
         <Button variant="contained" className={classes.delete}
           onClick={() => dispatch(actionTypes.taskDeleted(props.taskId))}>
@@ -59,7 +66,7 @@ const Task = (props: Props) => {
           status={props.status}
           label={(props.status === 0) ? 'Mark as done' : 'Mark as Pending'}
           markAsDone={() => dispatch(actionTypes.taskMarkAsDone(props.taskId))}
-          markAsPending={() => dispatch(actionTypes.taskMarkAsPending(props.taskId))} 
+          markAsPending={() => dispatch(actionTypes.taskMarkAsPending(props.taskId))}
         />
       </CardContent>
     </Card>
