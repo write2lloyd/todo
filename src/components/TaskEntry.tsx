@@ -5,7 +5,7 @@ import moment from 'moment';
 import SnackbarMui from '../components/SnackbarMui';
 
 interface Props {
-  addTask: Function,
+  addTask: (taskName: string, dueDate: string, status: number) => void,
 }
 
 const useStyles = makeStyles((theme) => ({

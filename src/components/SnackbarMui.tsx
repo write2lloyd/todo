@@ -1,15 +1,15 @@
 import React from 'react';
 import { Snackbar } from '@material-ui/core';
-import MuiAlert from '@material-ui/lab/Alert';
+import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 
 interface Props {
   openSnackbar: boolean,
   message: string,
-  closeSnackbar: Function,
+  closeSnackbar: () => void,
   variant: string
 }
 
-function Alert(props : any) {
+function Alert (props : any) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 

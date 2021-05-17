@@ -19,6 +19,7 @@ const useStyles = makeStyles(theme => {
   return {
     root: {
       backgroundColor: theme.palette.secondary.main,
+      marginBottom: theme.spacing(1),
     },
     delete: {
       backgroundColor: theme.palette.secondary.dark

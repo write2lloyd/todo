@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 interface Props {
   label: string,
   status: number,
-  markAsDone: Function,
+  markAsDone: () => void,
   markAsPending: Function,
 }
 
